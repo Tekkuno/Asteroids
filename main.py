@@ -11,8 +11,10 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
-    # Create the game window
+    # Create the game window, add the clock for FPS control, and set the delta time (dt)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    clock = pygame.time.Clock()
+    dt = 0
 
     # The gamestate variable is used as a emergency stop button
     # Standard state is "running" but other states can be set to break the while loop
@@ -31,6 +33,10 @@ def main():
 
         # This updates the game window
         pygame.display.flip()
+
+        # This sets the framerate to 60 FPS by pausing the loop 1/60 of a second and it feeds the return into dt
+        dt = clock.tick(10) / 1000
+
 
 
 if __name__ == "__main__":
