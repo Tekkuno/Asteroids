@@ -17,6 +17,11 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # Creating the player before the main loop (it was in before, that resets the rotation due to repeatedly calling the constructor)
+    x = SCREEN_WIDTH / 2
+    y = SCREEN_HEIGHT / 2
+    player = Player(x, y)
+
     # The gamestate variable is used as a emergency stop button
     # Standard state is "running" but other states can be set to break the while loop
     gamestate = "running"
@@ -32,10 +37,8 @@ def main():
         # This fills the game window with a black color
         screen.fill("black")
 
-        # This spawns a player and draws the player in the middle of the screen
-        x = SCREEN_WIDTH / 2
-        y = SCREEN_HEIGHT / 2
-        player = Player(x, y)
+        # This draws a player in the middle of the screen, it updates the rotation before drawing
+        player.update(dt)
         player.draw(screen)
 
         # This updates the game window
