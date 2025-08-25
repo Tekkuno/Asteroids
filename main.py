@@ -1,6 +1,7 @@
-# Imports for the pygame library and constants.py
+# Imports for the pygame library, constants.py, and player.py
 import pygame
 from constants import *
+from player import *
 
 def main():
     # Initialize the imported pygame modules
@@ -30,6 +31,12 @@ def main():
             
         # This fills the game window with a black color
         screen.fill("black")
+
+        # This spawns a player and draws the player in the middle of the screen
+        x = SCREEN_WIDTH / 2
+        y = SCREEN_HEIGHT / 2
+        player = Player(x, y)
+        player.draw(screen)
 
         # This updates the game window
         pygame.display.flip()
