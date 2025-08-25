@@ -1,5 +1,5 @@
 # Imports for the pygame library, constants.py, and player.py
-import pygame
+import pygame # type: ignore
 import sys
 from constants import *
 from player import *
