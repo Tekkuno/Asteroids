@@ -17,6 +17,11 @@ def main():
     clock = pygame.time.Clock()
     dt = 0
 
+    # Creating groups to keep the loop tidy and adding the player to them
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    Player.containers = (updatable, drawable)
+
     # Creating the player before the main loop (it was in before, that resets the rotation due to repeatedly calling the constructor)
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
@@ -38,8 +43,9 @@ def main():
         screen.fill("black")
 
         # This draws a player in the middle of the screen, it updates the rotation before drawing
-        player.update(dt)
-        player.draw(screen)
+        updatable.update(dt)
+        for item in drawable:
+            item.draw(screen)
 
         # This updates the game window
         pygame.display.flip()
