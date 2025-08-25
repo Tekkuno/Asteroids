@@ -1,5 +1,6 @@
 # Imports for the pygame library, constants.py, and player.py
 import pygame
+import sys
 from constants import *
 from player import *
 from asteroid import *
@@ -50,8 +51,18 @@ def main():
         # This fills the game window with a black color
         screen.fill("black")
 
-        # This draws a player in the middle of the screen, it updates the rotation before drawing
+        # This updates all items on the screen
         updatable.update(dt)
+
+        # This checks for collision between the player and asteroids
+        for rock in asteroids:
+            if player.collision(rock) == True:
+                print("Game over!")
+                sys.exit()
+            else:
+                pass
+
+        # This draws all the items on the screen
         for item in drawable:
             item.draw(screen)
 
