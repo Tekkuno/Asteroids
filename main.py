@@ -65,6 +65,15 @@ def main():
             else:
                 pass
 
+        # This checks for collision between shots and asteroids
+        for rock in asteroids:
+            for bullet in shots:
+                if bullet.collision(rock) == True:
+                    rock.kill()
+                    bullet.kill()
+                else:
+                    pass
+
         # This draws all the items on the screen
         for item in drawable:
             item.draw(screen)
