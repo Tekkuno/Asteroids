@@ -69,7 +69,7 @@ def main():
         for rock in asteroids:
             for bullet in shots:
                 if bullet.collision(rock) == True:
-                    rock.kill()
+                    rock.split()
                     bullet.kill()
                 else:
                     pass
